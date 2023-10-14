@@ -26,6 +26,7 @@ public class SecurityFilter extends OncePerRequestFilter {
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
         // Obtener el token del header
         var authHeader = request.getHeader("Authorization");
+
         if (authHeader != null) {
             var token = authHeader.replace("Bearer ", "");
             var nombreUsuario = tokenService.getSubject(token); // extract username
@@ -37,6 +38,6 @@ public class SecurityFilter extends OncePerRequestFilter {
                 SecurityContextHolder.getContext().setAuthentication(authentication);
             }
         }
-        filterChain.doFilter(request, response);
+        filterChain.doFilter(request, response); //cadena de filtros, pasar al siguiente filtro, luego entran los filtros de spring
     }
 }
