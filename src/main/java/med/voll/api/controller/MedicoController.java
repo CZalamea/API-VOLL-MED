@@ -16,6 +16,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 import java.net.URI;
 
 @RestController
+@CrossOrigin
 @RequestMapping("/medicos")
 @SecurityRequirement(name = "bearer-key")
 public class MedicoController {

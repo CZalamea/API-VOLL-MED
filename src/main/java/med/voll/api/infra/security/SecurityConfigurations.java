@@ -23,7 +23,9 @@ public class SecurityConfigurations {
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
-        return httpSecurity.csrf().disable().sessionManagement()
+        return httpSecurity.cors()
+                .and()
+                .csrf().disable().sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS) // Le indiamos a Spring el tipo de sesion
                 .and().authorizeRequests()
                 .requestMatchers(HttpMethod.POST, "/login").permitAll()

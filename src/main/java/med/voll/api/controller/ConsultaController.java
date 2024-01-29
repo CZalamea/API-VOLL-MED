@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.*;
 
 @Controller
 @ResponseBody
+@CrossOrigin
 @RequestMapping("/consultas")
 @SecurityRequirement(name = "bearer-key")
 @SuppressWarnings("all")
